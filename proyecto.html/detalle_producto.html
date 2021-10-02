@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --black: #000000;
+      --very-light-pink: #C7C7C7;
+      --text-input-field: #F7F7F7;
+      --hospital-green: #ACD9B2;
+      --sm: 14px;
+      --md: 16px;
+      --lg: 18px;
+    }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--very-light-pink);
+      position:relative;
+
+    }
+    .menu {
+      display: none;
+    }
+    .logo {
+      width: 100px;
+    }
+    .navbar-left ul,
+    .navbar-right ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 60px;
+    }
+    .navbar-left {
+      display: flex;
+    }
+    .navbar-left ul {
+      margin-left: 12px;
+    }
+    .navbar-left ul li a,
+    .navbar-right ul li a {
+      text-decoration: none;
+      color: var(--very-light-pink);
+      border: 1px solid var(--white);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .navbar-left ul li a:hover,
+    .navbar-right ul li a:hover {
+      border: 1px solid var(--hospital-green);
+      color: var(--hospital-green);
+    }
+    .navbar-email {
+      color: var(--very-light-pink);
+      font-size: var(--sm);
+      margin-right: 12px;
+    }
+    .navbar-shopping-cart {
+      position: relative;
+    }
+    .navbar-shopping-cart div {
+      width: 16px;
+      height: 16px;
+      background-color: var(--hospital-green);
+      border-radius: 50%;
+      font-size: var(--sm);
+      font-weight: bold;
+      position: absolute;
+      top: -6px;
+      right: -3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .main{
+        display: grid;
+        grid-template-columns: 75% 50%; 
+        
+    }
+
+
+    .product-detail {
+      width: 360px;
+      padding-bottom: 24px;
+      position: absolute;
+      right: 0;
+    }
+    .product-detail-close {
+      background: var(--white);
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 2;
+      padding: 12px;
+      border-radius: 50%;
+    }
+    .product-detail-close:hover {
+      cursor: pointer;
+    }
+    .product-detail > img:nth-child(2) {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 0 0 20px 20px;
+    }
+    .product-info {
+      margin: 24px 24px 0 24px;
+    }
+    .product-info p:nth-child(1) {
+      font-weight: bold;
+      font-size: var(--md);
+      margin-top: 0;
+      margin-bottom: 4px;
+    }
+    .product-info p:nth-child(2) {
+      color: var(--very-light-pink);
+      font-size: var(--md);
+      margin-top: 0;
+      margin-bottom: 36px;
+    }
+    .product-info p:nth-child(3) {
+      color: var(--very-light-pink);
+      font-size: var(--sm);
+      margin-top: 0;
+      margin-bottom: 36px;
+    }
+    .primary-button {
+      background-color: var(--hospital-green);
+      border-radius: 8px;
+      border: none;
+      color: var(--white);
+      width: 100%;
+      cursor: pointer;
+      font-size: var(--md);
+      font-weight: bold;
+      height: 50px;
+    }
+    .add-to-cart-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 240px);
+        gap: 26px;
+        place-content: center;
+        margin: 20px;
+            
+    }
+
+    .product-card{
+        width: 240px;
+    }
+
+    .product-card img{
+        width: 240px;
+        height: 240px;
+        border-radius: 20px;
+        object-fit: cover;
+    }
+
+    .product-info-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+    }
+
+    .product-info-card figure{
+        margin: 0;
+    }
+
+    .product-info-card figure img{
+        width: 35px;
+        height: 35px;
+    }
+
+    .product-info-card div p:nth-child(1){
+            font-size: var(--sm);
+            margin-top: 0;
+            margin-bottom: 4px;
+    }           
+
+    .product-info-card div p:nth-child(2){
+        font-weight: bold;
+        font-size: var(--md);
+        margin-top: 0;
+        margin-bottom: 0;
+        color: var(--very-light-pink);
+    }
+
+    @media (max-width: 640px) {
+
+      .menu {
+        display: block;
+      }
+      .navbar-left ul {
+        display: none;
+      }
+      .navbar-email {
+        display: none;
+      }
+      
+      .product-detail {
+        width: 100%;
+      }
+        
+      .product-card img{
+        width: 140px;
+        height: 140px;
+      }
+
+      
+
+      .product-card{
+        width: 140px;
+      }
+
+      .cards-container {
+        grid-template-rows: repeat(auto-fill, 140px);
+
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="../icons/icon_menu.svg" alt="menu" class="menu">
+
+    <div class="navbar-left">
+      <img src="../logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+      <ul>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Others</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">yokoo@gmail.com</li>
+        <li class="navbar-shopping-cart">
+          <img src="../icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main">
+    <section class="main-container">
+        <div class="cards-container">
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/42220/air-blade-blowing-chrome-42220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Fan">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Fan</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Bike">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Bike</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/6376327/pexels-photo-6376327.png?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="camara">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Camara</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/7460165/pexels-photo-7460165.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Blender">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Blender</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/5709948/pexels-photo-5709948.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Owl">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Owl</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/4430936/pexels-photo-4430936.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Speaker">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Speaker</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Headphone">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Headphone</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/8533225/pexels-photo-8533225.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Phone">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Cellphone</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/92069/pexels-photo-92069.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Electronic Guitar</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/2097428/pexels-photo-2097428.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="microfono">
+                <div class="product-info-card">
+                    <div>
+                        <p>$120,00</p>
+                        <p>Microfono</p>
+                    </div>
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.svg" alt="">
+                    </figure>
+                </div>
+            </div>
+    
+    </section>
+        
+
+        <aside class="product-detail">
+            <div class="product-detail-close">
+              <img src="../icons/icon_close.png" alt="close">
+            </div>
+            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+            <div class="product-info">
+              <p>$35,00</p>
+              <p>Bike</p>
+              <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
+              <button class="primary-button add-to-cart-button">
+                <img src="../icons/bt_add_to_cart.svg" alt="add to cart">
+                Add to cart
+              </button>
+            </div>
+          </aside>
+    </main>
+  
+
+
+
+</body>
+</html>
