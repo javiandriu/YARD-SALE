@@ -207,8 +207,11 @@
         color: var(--very-light-pink);
     }
 
-    @media (max-width: 640px) {
+    @media only screen and (max-width: 640px) {
 
+      .cards-container{
+        display:none
+      }
       .menu {
         display: block;
       }
@@ -221,22 +224,6 @@
       
       .product-detail {
         width: 100%;
-      }
-        
-      .product-card img{
-        width: 140px;
-        height: 140px;
-      }
-
-      
-
-      .product-card{
-        width: 140px;
-      }
-
-      .cards-container {
-        grid-template-rows: repeat(auto-fill, 140px);
-
       }
 
     }
